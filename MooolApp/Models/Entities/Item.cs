@@ -14,7 +14,7 @@ namespace MooolApp.Models
         public double price { get; set; } 
 
         [ForeignKey("Mool")]
-        public string MoolID { get; set; }
+        public string? MoolID { get; set; }
         //nav object
         public  virtual Mool? _Mool { get; set; }
     }

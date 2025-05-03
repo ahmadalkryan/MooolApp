@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MooolApp.Models;
 
@@ -10,9 +11,10 @@ using MooolApp.Models;
 namespace MooolApp.Migrations
 {
     [DbContext(typeof(DbMool))]
-    partial class DbMoolModelSnapshot : ModelSnapshot
+    [Migration("20250503174458_four")]
+    partial class four
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,6 +61,7 @@ namespace MooolApp.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("MoolID")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
@@ -122,7 +125,9 @@ namespace MooolApp.Migrations
                 {
                     b.HasOne("MooolApp.Models.Mool", "_Mool")
                         .WithMany("Items")
-                        .HasForeignKey("MoolID");
+                        .HasForeignKey("MoolID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("_Mool");
                 });

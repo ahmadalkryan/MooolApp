@@ -11,6 +11,7 @@ builder.Services.AddDbContext<DbMool>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DB1")));
 
 builder.Services.AddScoped<IItemRepo,ItemRepo > ();
+builder.Services.AddScoped<IMoolRepo,MoolRepo> ();
 
 var app = builder.Build();
 
@@ -31,6 +32,10 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=ItemController}/{action=GEtAllItem}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    //,
+//         "{controller=ItemController}/{action=GEtAllItem}/{id?}"
+   
+    );
 
 app.Run();

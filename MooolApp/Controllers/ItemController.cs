@@ -6,16 +6,15 @@ namespace MooolApp.Controllers
 {
     public class ItemController : Controller
     {
-        private readonly ItemRepo _repo;
+        private readonly IItemRepo _repo;
 
-        public ItemController(ItemRepo repo)
+        public ItemController(IItemRepo repo)
         {
              _repo = repo;
         }
 
-        [HttpGet]
-
-        public async Task<IActionResult> GEtAllItem()
+        [HttpGet]   
+        public IActionResult GEtAllItem()
         {
             var result =  _repo.GETAll();
 
@@ -23,32 +22,51 @@ namespace MooolApp.Controllers
            
         }
 
+        [HttpGet]
+        public  IActionResult CreateItem()
+        {
+            return View();
+        }
+
 
         [HttpPost]
 
-        public async Task<IActionResult> CreateItem(Item item)
+        public ActionResult CreateItem(Item item)
         {
            _repo.insertItem(item);
             return View(item);
         }
+
+        [HttpGet]
+        public IActionResult UpdateItem()
+        {
+            return View();
+        }
         
-        [HttpPut]
-        public async Task<IActionResult> UpdateItem(Item item)
+        [HttpPost]
+        public IActionResult UpdateItem(Item item)
         {
                 
            _repo.updateItem(item);
 
-            return Ok();
+            return View();
            
 
         }
-        public async Task<IActionResult> DeleteItem(string id)
+
+        public ActionResult DeleteItem(string id)
         {
             _repo.DeleteItem(id);
-            return Ok();
+            return View();
         }
+        [HttpGet]
+        public ActionResult GetItem(string id)
+        {
 
-
+            var result = _repo.GetItem(id);
+            return View(result);
+        }
+        
 
 
 

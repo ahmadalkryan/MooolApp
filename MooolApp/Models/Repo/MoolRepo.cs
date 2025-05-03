@@ -1,6 +1,6 @@
 ﻿namespace MooolApp.Models.Repo
 {
-    public class MoolRepo
+    public class MoolRepo:IMoolRepo
     {
         private readonly DbMool _db;
 
@@ -9,9 +9,17 @@
             _db = db;
         }
 
+        
+
+
         public List<Mool> GetAll()
         {
             var mo = _db.Mools.ToList();
+
+            if(mo==null)
+            {
+                return null;
+            }
             return mo;
         }
 
@@ -40,6 +48,13 @@
 
             _db.Mools.Remove(m);
             return _db.SaveChanges();
+        }
+
+         public  Mool GetMool(string id)
+        {
+           var m = _db.Mools.FirstOrDefault(x => x.Id == id);
+            
+            return m;
         }
     }
 }

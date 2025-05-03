@@ -6,5 +6,7 @@
         public Item insertItem(Item item);
         public int updateItem(Item item);
         public int DeleteItem(string id);
+
+        public Item GetItem(string id);
     }
 }
