@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MooolApp.Models;
+using MooolApp.Models.Repo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DbMool>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DB1")));
 
-
+builder.Services.AddScoped<IItemRepo,ItemRepo > ();
 
 var app = builder.Build();
 
@@ -30,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=ItemController}/{action=GEtAllItem}/{id?}");
 
 app.Run();

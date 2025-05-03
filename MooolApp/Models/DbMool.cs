@@ -9,7 +9,7 @@ namespace MooolApp.Models
 
         }
 
-        public virtual DbSet<Mool> Mool { get; set; }
+        public virtual DbSet<Mool> Mools { get; set; }
 
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<Address> Addressess { get; set; }
