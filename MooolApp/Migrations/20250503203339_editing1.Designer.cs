@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MooolApp.Models;
 
@@ -10,9 +11,10 @@ using MooolApp.Models;
 namespace MooolApp.Migrations
 {
     [DbContext(typeof(DbMool))]
-    partial class DbMoolModelSnapshot : ModelSnapshot
+    [Migration("20250503203339_editing1")]
+    partial class editing1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

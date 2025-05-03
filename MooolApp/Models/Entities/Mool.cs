@@ -6,7 +6,7 @@ namespace MooolApp.Models
     {   
         [Required(ErrorMessage ="this feild require")]
         public string Name { get; set; }
-
+        [Required(ErrorMessage ="required")]
         public virtual Address Address { get; set; }
 
 

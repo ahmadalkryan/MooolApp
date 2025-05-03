@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MooolApp.Models;
 
@@ -10,9 +11,10 @@ using MooolApp.Models;
 namespace MooolApp.Migrations
 {
     [DbContext(typeof(DbMool))]
-    partial class DbMoolModelSnapshot : ModelSnapshot
+    [Migration("20250503202929_editing")]
+    partial class editing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,24 +50,18 @@ namespace MooolApp.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .ValueGeneratedOnAdd()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasDefaultValue("ver good");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("MoolID")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("food");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("price")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("float")
-                        .HasDefaultValue(3456.0);
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -78,7 +74,8 @@ namespace MooolApp.Migrations
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(450)")
+                        .HasDefaultValue("2");
 
                     b.Property<string>("AddressId")
                         .IsRequired()
